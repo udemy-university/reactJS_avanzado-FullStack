@@ -1,0 +1,81 @@
+query {
+  twitter {
+    search(q: "GraphQL"){   //Argumentos de las funciones.
+      text
+      retweet_count
+      created_at
+      user {
+        id
+        name
+      }
+    }
+  }
+}
+
+Ejemplo de como usar alias y fragment.
+
+{
+  twitter{
+    PHPTweets: search(q:"PHP"){
+      ...camposTweet
+    }
+    GraphQLTweets: search(q:"GraphQL"){
+      ...camposTweet
+    }
+    ReactJSTweets: search(q:"ReactJS"){
+      ...camposTweet
+    }
+  }
+}
+
+fragment camposTweet on Tweet{
+  	id
+    text
+    retweet_count
+}
+
+{
+  hn{
+    topStories(limit:10, offset:0){
+      id
+      title
+      url
+    }
+  }
+}
+
+Ejemplo query con nombre y parámetro.
+
+query ConsultarTweetsGraphQL($tweet: String!){
+  twitter{
+    search(q: $tweet){
+      id
+      text
+    }
+  }
+}
+
+{
+  "tweet": "GraphQL"
+}
+
+Ejemplo de mutation y como leer el valor insertado.
+
+mutation nuevoComentario($input: SetValueForKeyInput!){
+  keyValue_setValue(input: $input){
+    clientMutationId
+    item{
+      id
+      value
+    }
+  }
+}
+
+query LeerComentario{
+  keyValue{
+    getValue(id: "787878789999"){
+      id
+      value
+    }
+  }
+}

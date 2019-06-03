@@ -1,0 +1,147 @@
+- Query
+- Mutation
+- Resolver
+- Schema
+
+Query:
+En un CRUD un query nos permite leer los registros.
+Es la forma de extraer la información existente desde la base de datos o Rest API.
+Equivalente a un select de SQL o un get de una Rest API.
+
+En el query declaras que campos o datos vas a requerir para tu consulta y también soporta parámetros.
+En el query de GraphQL es universal, por lo tanto es igual en angular, node o react o si la base de datos es NoSQL o SQL.
+
+Ejemplo de Query:
+
+query{
+    obtenerProductos{
+        id
+        nombre
+        precio
+        stock
+    }
+}
+
+Resultado de una query:
+{
+    "data":{
+        "obtenerProductos":[
+            {
+                "id" : ".....",
+                "nombre" : ".....",
+                "precio" : ".....",
+                "stock" : "....."
+            },
+            {
+                "id" : ".....",
+                "nombre" : ".....",
+                "precio" : ".....",
+                "stock" : "....."
+            }
+        ]
+    }    
+}
+
+Mutation
+
+Se utiliza para las otras 3 acciones del CRUD: Actualizar, Eliminar y Crear Registros.
+Similares a un PUT / PATCH, Delete o Post de una Rest API o un Delete, Update e Insert de SQL.
+Igual que el query son independientes del lenguaje, así que son iguales si tu backend es de node, php o python o si tu base de datos es SQL o NoSQL.
+
+Ejempl ode Mutation:
+
+mutation eliminarProducto($id: ID){
+    eliminarProducto(id: $id)
+}
+
+Resultado de un mutation:
+{
+    "data": {
+        "eliminarProducto" : "Se eliminó correctamente"
+    }
+}
+
+Resolvers
+
+Queries y Mutations por si solos no hacen mucho, requieren un backend para realizar las operaciones en la base de datos.
+Para ello se usan los resolvers, pueden estar escritos en cualquier lenguaje y funcionan sobre cualquier base de datos.
+A diferencia de los queries y los mutations, el resolver es especifico del lenguaje que utilices y las interacciones a la base de datos también lo son.
+
+Ejemplo de resolver:
+
+getCliente: (root, {id}) => {
+    return new Promise((resolve, object) => {
+        Clientes.findById(id, (error, cliente) => {
+            if(error)
+                rejects(error)
+            else
+                resolve(cliente)
+        });
+    });
+}
+
+Schema:
+
+Es lo que describe tus tipos de objeto, queries y datos de tu aplicación.
+El schema en GraphQL utiliza un typing en el que le defines si un campo será de tipo string, int, boolean u otro tipo de dato.
+El schema y el resolver están muy relacionados, el schema define la forma de los datos mientras que el resolver la comunicación con el lenguaje del servidor y la base de datos.
+
+Ejemplo de Schema:
+
+type Cliente{
+    id: ID
+    nombre: String
+    apellido: String
+    empresa: String
+    emails: [Email] //permite guardar multiples emails.
+    edad: Int
+}
+
+type Email{
+    email: String
+}
+
+Esta estructura debe ser similar a la base de datos.
+
+Schema y Resolver:
+En tu Schema.
+
+type Query{
+    getCliente(id: ID): Cliente
+}
+
+En tu resolver.
+
+getCliente: (root, {id}) => {
+    return new Promise((resolve, object) => {
+        Clientes.findById(id, (error, cliente) => {
+            if(error)
+                rejects(error)
+            else
+                resolve(cliente)
+        });
+    });
+}
+
+https://developer.github.com/v4/explorer/
+https://www.graphqlhub.com/playground?query=%23%20Welcome%20to%20GraphQLHub!%20Type%20your%20GraphQL%20query%20here%2C%20or%0A%23%20explore%20the%20%22Docs%22%20to%20the%20right%0A
+
+Si los argumentos vienen con un !, significa que son obligatorios.
+
+Los Alias en GraphQL se utilizan para usar la misma función múltiples veces con distinto argumento.
+
+Existen lo que se llama fragments y es lo que agrupa todos los campos de los que queremos obtener información, lo utilizamos con la finalidad de modificar que campos queres obtener
+información o no y en caso de que tengamos la misma función con distintos argumentos, tener que actualizar los campos en todos los casos.
+en alguna función se pueden poner campos que no esten en el fragment.
+A los fragments en las queries se los llama con (...[nombreFragment])
+
+Se llama campos anidados cuando accedes a campos adentro de objetos. Se puede anidar en mas de un nivel.
+
+Para la paginacion, usamos limit y offset para hacer una paginación.
+
+Para ponerle nombres a las queries simplemente luego del query inicial escribimos el nombre de la consulta, Sirve para cuando pasemos parámetros.
+Para pasar parámetros a continuación del nombre de la query se listan separados de una coma con el siguiente formato
+query nombreQuery($param1: tipo, $param2: tipo, etc.) Si al final del tipo ponemos un !, estamos diciendo que ese parámetro es obligatorio.
+Si el parámetro no es obligatorio, no es necesario ponerlo en el json de variables para la query.
+
+Los mutations estan explicados anteriormente.

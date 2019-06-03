@@ -1,0 +1,51 @@
+GraphQL = Graph Query Language
+Similar a SQL, ya que es utilizado para realizar consultas.
+Para utilizarlo, realizar consultar y leer los resultados, deberás tener GraphQL instalado en tu servidor.
+Se puede usar con cualquier lenguaje backend. Muy relacionado con React.
+
+Hay separación entre la Base de Datos y el Cliente. Hay una capa de abstracción (seguridad).
+Corre sobre Base de datos Relacionales y No Relacionales.
+Se puede conectar con cualquier ORM (mongoose).
+Se puede utilizar GraphQL sobre una base de datos ya existente.
+
+GraphQL es desarrollado pensando en el performance, en utilizar únicamente los datos que necesitamos.
+
+Problemas de las API's
+/AUTOS/
+/AUTOS/MARCA/
+/AUTOS/MARCA/2015/AUTOMATICO/
+/AUTOS/MARCA/2014/4_CILINDROS/
+/AUTOS/MARCA/2008/4_PUERTAS/
+Muchos endpoints en base a necesidades.
+
+En GraphQL no sucede.
+query{
+	autos(year: 2008){
+		marca
+		modelo
+		transmision
+		puertas
+}
+
+query{
+	autos(year: 2012, marca: "BMW"){
+		marca
+		modelo
+		transmision
+		puertas
+	}
+}
+
+Se le pueden pasar variables y hacer las queries inteligentes.
+
+Entre sus beneficios encontrarás que puedes realizar consultas y mostrar los datos que necesitas.
+No requieres crear nuevos endpoints.
+No importa la versión ya que siempre es compatible con versiones anteriores.
+Se puede instalar sobre una API o una base de datos ya existente.
+Independiente del lenguaje.
+
+Cuando creamos un mutation y le pasamos los campos al input, al lado del tipo del dato
+le podemos poner un ! significa que el campo es obligatorio
+Ej: nombre: String!
+
+Continuar desde el inicio del 27 sección 5.
