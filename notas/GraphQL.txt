@@ -145,3 +145,28 @@ query nombreQuery($param1: tipo, $param2: tipo, etc.) Si al final del tipo ponem
 Si el parámetro no es obligatorio, no es necesario ponerlo en el json de variables para la query.
 
 Los mutations estan explicados anteriormente.
+
+Ejemplo de Mutation y como ver los datos creados
+
+mutation{
+  crearCliente(input: {
+    nombre:"Sandro"
+    apellido:"Dezerio"
+    empresa: "Smart360"
+    email:"sdezerio@gmail.com"
+    edad: 28
+    tipo:BASICO
+    pedidos:[
+      {producto:"curso graphql" precio: 10},
+      {producto:"pc" precio: 200}
+    ]
+  }){
+    id
+    edad
+    tipo
+    pedidos {
+      producto
+      precio
+    }
+  }
+}

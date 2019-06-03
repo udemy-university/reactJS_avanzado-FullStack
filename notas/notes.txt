@@ -48,4 +48,13 @@ Cuando creamos un mutation y le pasamos los campos al input, al lado del tipo de
 le podemos poner un ! significa que el campo es obligatorio
 Ej: nombre: String!
 
-Continuar desde el inicio del 27 sección 5.
+Tipos de datos GraphQL
+- INT
+- FLOAT
+- STRING
+- ID: número único
+- BOOLEAN
+
+Comentarios:
+- #: Comentario simple comenzando con numeral de una linea.
+- """ Descripción """: Descripción que te permite visualizar el graphqli para saber que es cada cosa.
