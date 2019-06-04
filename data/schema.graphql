@@ -20,6 +20,7 @@ enum TipoCliente {
 	PREMIUN
 }
 type Query{
+	getClientes(limite: Int): [Cliente]
 	getCliente(id: ID) : Cliente
 }
 input PedidoInput {
@@ -45,4 +46,6 @@ type Mutation {
 	#Nombre del Resolver, Input con Datos y Valor que Retorna
 	""" Te Permite crear nuevos Clientes """
 	crearCliente(input: ClienteInput) : Cliente
+	actualizarCliente(input: ClienteInput) : Cliente
+	eliminarCliente(id: ID!) : String
 }
