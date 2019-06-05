@@ -58,3 +58,18 @@ Tipos de datos GraphQL
 Comentarios:
 - #: Comentario simple comenzando con numeral de una linea.
 - """ Descripción """: Descripción que te permite visualizar el graphqli para saber que es cada cosa.
+
+Alias en GraphQL:
+si queremos ejecutar dos veces la misma query GraphQL no te dejará. Hay que usar alias de la siguiente manera:
+query {
+	'alias1': metodo(){
+		campos a devolver
+	}
+
+	'alias2': metodo(){
+		campos a devolver
+	}
+}
+todo lo que devuelve está en un objeto llamado data.
+
+Cuando tienes consultas similares pero cuyos argumentos son distintos se soluciona con fragments
