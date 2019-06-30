@@ -73,3 +73,14 @@ query {
 todo lo que devuelve está en un objeto llamado data.
 
 Cuando tienes consultas similares pero cuyos argumentos son distintos se soluciona con fragments
+
+Apollo es una plataforma que te permitirá realizar consultas a tus datos de graphql.
+Con apollo te será muy sencillo conectar tus aplicaciones react con graphql.
+Disponible para: Angular, JavaScript y React Native.
+
+Apollo:
+API para realizar queries y mutations
+cachear las consultas y datos
+Es necesario configurar un cliente y un servidor (Apollo Cliente y Server)
+Sintaxis similar a redux
+Existen otras opciones como relay o graphql-yoga
