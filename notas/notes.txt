@@ -84,3 +84,5 @@ cachear las consultas y datos
 Es necesario configurar un cliente y un servidor (Apollo Cliente y Server)
 Sintaxis similar a redux
 Existen otras opciones como relay o graphql-yoga
+
+Chrome (extensiones) => Apollo Dev Tools
