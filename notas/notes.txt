@@ -86,3 +86,5 @@ Sintaxis similar a redux
 Existen otras opciones como relay o graphql-yoga
 
 Chrome (extensiones) => Apollo Dev Tools
+
+React Apollo => pollInterval, cada cuantos segundos la base se refresca y no muestra solo lo que tiene cacheado.
