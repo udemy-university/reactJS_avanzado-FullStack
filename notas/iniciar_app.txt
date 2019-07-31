@@ -1,0 +1,2 @@
+Para iniciar la aplicación, hay que abrir 2 consolas.
+Una en cliente y una en servidor y en cada una ejecutar 'npm start'

@@ -17,6 +17,19 @@ class NuevoCliente extends Component {
 		emails: []
 	}
 
+	leerCampo = i => e => {
+		const nuevoEmail = this.state.emails.map((email, index) => {
+			if(i !== index) return email;
+			return {
+				...email,
+				email: e.target.value
+			}
+		})
+		this.setState({
+			emails: nuevoEmail
+		})
+	}
+
 	nuevoCampo = () => {
 		this.setState({
 			emails: this.state.emails.concat([{email: ''}])
@@ -45,7 +58,8 @@ class NuevoCliente extends Component {
 									onSubmit={e=>{
 										e.preventDefault();
 
-										const {nombre, apellido, empresa, edad, tipo, email} = this.state.cliente;
+										const {nombre, apellido, empresa, edad, tipo} = this.state.cliente;
+										const {emails} = this.state;
 
 										if(nombre === '' || apellido === '' || empresa === '' || edad === '' || tipo === ''){
 											this.setState({
@@ -58,7 +72,7 @@ class NuevoCliente extends Component {
 											error: false
 										});
 
-										const input = {nombre, apellido, empresa, edad: Number(edad), tipo, email};
+										const input = {nombre, apellido, empresa, edad: Number(edad), tipo, emails};
 
 										crearCliente({
 											variables: {input}
@@ -116,7 +130,9 @@ class NuevoCliente extends Component {
 										<div key={index} className="form-group col-md-12">
 											<label>Correo: {index + 1}:</label>
 											<div className="input-group">
-												<input	type="email"
+												<input	
+														onChange={this.leerCampo(index)}
+														type="email"
 														placeholder="Email"
 														className="form-control"
 												/>
