@@ -4,7 +4,9 @@ import { Query } from 'react-apollo';
 import FormularioEditarCliente from './FormularioEditarCliente';
 
 class EditarCliente extends Component {
-	state = {  }
+	state = { 
+		
+	}
 	render() {
 		// tomar el ID del contacto a editar
 		const {id} = this.props.match.params;
@@ -20,7 +22,8 @@ class EditarCliente extends Component {
 
 							return (
 								<FormularioEditarCliente
-									
+									cliente={data.getCliente}
+									id
 								/>
 							)
 						}}

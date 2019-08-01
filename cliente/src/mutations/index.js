@@ -8,4 +8,20 @@ mutation crearCliente($input: ClienteInput){
     apellido
   }
 }
-`
+`;
+
+export const ACTUALIZAR_CLIENTE = gql`
+	mutation actualizarCliente($input: ClienteInput) {
+		actualizarCliente(input: $input) {
+			id
+			nombre
+			apellido
+			edad
+			empresa
+			tipo
+			emails {
+				email
+			}
+		}
+	}
+`;
