@@ -15,14 +15,20 @@ class EditarCliente extends Component {
 			<Fragment>
 				<h2 className="text-center">Editar Cliente</h2>
 				<div className="row justify-content-center">
+					{/**
+						Refetch sirve para refrescar la caché. Se usa cuando edito una persona en el formulario,
+						se actualiza en la grilla pero cuando vuelvo a ingresar
+						al formulario seguía mostrando los datos viejos.
+					*/}
 					<Query query={CLIENTE_QUERY} variables={{id}}>
-						{({loading, error, data}) => {
+						{({loading, error, data, refetch}) => {
 							if(loading) return 'Cargando...';
 							if(error) return `Error ${error.message}`;
 
 							return (
 								<FormularioEditarCliente
 									cliente={data.getCliente}
+									refetch={refetch}
 									id
 								/>
 							)
