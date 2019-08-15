@@ -24,3 +24,14 @@ export const CLIENTE_QUERY = gql`
 			}
 		}
 	}`;
+
+export const PRODUCTOS_QUERY = gql`
+	query {
+  		obtenerProductos{
+			id
+			nombre
+			precio
+			stock
+		}
+	}
+`;
