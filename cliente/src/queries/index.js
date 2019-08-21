@@ -45,3 +45,15 @@ export const OBTENER_PRODUCTO = gql`
 		}
 	}
 `;
+
+export const OBTENER_PRODUCTOS = gql `
+	query obtenerProductos($limite:Int, $offset: Int) {
+		obtenerProductos(limite: $limite, offset: $offset){
+			id
+			nombre
+			precio
+			stock
+		}
+		totalProductos
+	}
+`;
