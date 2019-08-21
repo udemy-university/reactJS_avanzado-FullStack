@@ -1,5 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import DatosCliente from './DatosCliente';
+import { OBTENER_PRODUCTOS } from '../../queries';
+import { Query } from 'react-apollo';
+import '../../spinner.css';
+import ContenidoPedido from './ContenidoPedido';
 
 class NuevoPedido extends Component {
     state = {
@@ -18,7 +22,26 @@ class NuevoPedido extends Component {
                         />
                     </div>
                     <div className="col-md-9">
-                        Pedido aquí
+                        <Query query={OBTENER_PRODUCTOS}>
+							{({ loading, error, data}) => {
+								if(loading) return (
+									<div className="spinner">
+										<div className="bounce1"></div>
+										<div className="bounce2"></div>
+										<div className="bounce3"></div>
+									</div>
+								)
+								if(error) return `Error ${error.message}`;
+								console.log(data);
+
+								return (
+									<ContenidoPedido
+										productos={data.obtenerProductos}
+										id={id}
+									/>
+								)
+							}}
+						</Query>
                     </div>
                 </div>
             </Fragment>
