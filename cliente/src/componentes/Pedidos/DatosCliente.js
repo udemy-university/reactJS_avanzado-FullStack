@@ -9,8 +9,8 @@ const DatosCliente = ({id}) => {
             <Query query={CLIENTE_QUERY} variables={{id}} pollInterval={500}>
                 {({ loading, error, data, startPolling, stopPolling}) => {
                     if(loading) return "Cargando...";
-                    if(error) return `Error ${error.message}`;
-                    console.log(data.getCliente);
+					if(error) return `Error ${error.message}`;
+
 					const { nombre, apellido, edad, emails, empresa, tipo} = data.getCliente;
 
                     return (
