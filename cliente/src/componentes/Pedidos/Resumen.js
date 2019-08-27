@@ -4,7 +4,7 @@ import Producto from './Producto';
 const Resumen = (props) => {
 	const productos = props.productos;
 
-	if(productos.length === 0) return null;
+	if(productos && productos.length === 0) return null;
 
 
 	return (
@@ -29,6 +29,7 @@ const Resumen = (props) => {
 											producto={producto}
 											index={index}
 											actualizarCantidad={props.actualizarCantidad}
+											eliminarProducto={props.eliminarProducto}
 								/>
 							))}
 						</tbody>

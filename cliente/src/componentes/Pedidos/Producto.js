@@ -18,7 +18,9 @@ class Producto extends Component {
 					</td>
 					<td>
 						<button type="button"
-								className="btn btn-danger font-weight-bold">
+								className="btn btn-danger font-weight-bold"
+								onClick={e=>this.props.eliminarProducto(producto.id)}
+						>
 							&times; Eliminar
 						</button>
 					</td>

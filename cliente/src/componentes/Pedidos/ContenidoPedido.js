@@ -9,40 +9,59 @@ class ContenidoPedido extends Component {
 	}
 
 	actualizarCantidad = (cantidad, index) => {
-
 		//leer el state de productos
 		const productos = this.state.productos;
+		//validamos
 
-		let nuevoTotal = 0;
+		//actualizar la cantidad de productos
+		productos[index].cantidad = Number(cantidad);
 
+		//agregamos al state
+		this.setState({
+			productos
+		},()=>{
+			this.actualizarTotal()
+		});
+
+	}
+
+	actualizarTotal = () => {
+		//leer el state de productos
+		const productos = this.state.productos;
+				
 		//cuando todos los productos están en 0
 		if(productos.length === 0){
 			this.setState({
-				total: nuevoTotal
+				total: 0
 			});
 			return;
 		}
 
-		
-		//actualizar la cantidad de productos
-		productos[index].cantidad = Number(cantidad);
-		
+		let nuevoTotal = 0;
+
 		//realizar la operacion de cantidad por precio
-		productos.map(producto => nuevoTotal += (producto.cantidad * producto.precio));
+		productos.map(producto => nuevoTotal += (Number(producto.cantidad) * producto.precio));  
 
-		//validamos
-
-		//agregamos al state
 		this.setState({
-			productos,
 			total: nuevoTotal
-		});
-
+		})
 	}
 
 	seleccionarProducto = (productos) => {
 		this.setState({
 			productos
+		});
+	}
+
+	eliminarProducto = (id) => {
+		const productos = this.state.productos;
+
+		const productosRestantes = productos.filter(producto => producto.id !== id);
+
+		this.setState({
+			productos: productosRestantes
+		},()=>{
+			this.actualizarTotal()
 		});
 	}
 
@@ -56,9 +75,11 @@ class ContenidoPedido extends Component {
 						placeholder={"Seleccionar Productos"}
 						getOptionValue={(options) => options.id}
 						getOptionLabel={(options) => options.nombre}
+						value={this.state.productos}
 				/>
 				<Resumen	productos={this.state.productos}
 							actualizarCantidad={this.actualizarCantidad}
+							eliminarProducto={this.eliminarProducto}
 				/>
 				<p className="font-weight-bold float-right mt-3">
 					Total:
