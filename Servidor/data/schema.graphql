@@ -6,11 +6,6 @@ type Cliente{
 		emails: [Email]
 		edad: Int
 		tipo: TipoCliente
-		pedidos: [Pedido]
-}
-type Pedido {
-	producto: String
-	precio: Int
 }
 type Email {
 	email: String
@@ -21,10 +16,28 @@ type Producto {
 	precio: Int!,
 	stock: Int!
 }
+type Pedido {
+	id: ID
+	pedido: [PedidoProducto]
+	total: Int
+	fecha: String
+	cliente: ID
+	estado: EstadoPedido
+}
+type PedidoProducto {
+	id: ID
+	cantidad: Int
+}
 enum TipoCliente {
 	BASICO
 	PREMIUN
 }
+enum EstadoPedido {
+	PENDIENTE
+	COMPLETADO
+	CANCELADO
+}
+
 type Query{
 	# Clientes
 	getClientes(limite: Int, offset: Int): [Cliente]
@@ -35,10 +48,6 @@ type Query{
 	obtenerProductos(limite: Int, offset: Int): [Producto]
 	obtenerProducto(id: ID): Producto
 	totalProductos: String
-}
-input PedidoInput {
-	producto: String
-	precio: Int
 }
 input EmailInput {
 	email: String
@@ -62,6 +71,20 @@ input ProductoInput {
 	stock: Int!
 }
 
+input PedidoInput {
+	id: ID
+	pedido: [PedidoProductoInput]
+	total: Int
+	fecha: String
+	cliente: ID
+	estado: EstadoPedido
+}
+
+input PedidoProductoInput {
+	id: ID
+	cantidad: Int
+}
+
 """ Mutations para crear nuevos Clientes """
 type Mutation {
 	#Nombre del Resolver, Input con Datos y Valor que Retorna
@@ -73,4 +96,6 @@ type Mutation {
 	nuevoProducto(input: ProductoInput) : Producto
 	actualizarProducto(input: ProductoInput) : Producto
 	eliminarProducto(id: ID!) : String
+	#Pedidos
+	nuevoPedido(input: PedidoInput): Pedido
 }
