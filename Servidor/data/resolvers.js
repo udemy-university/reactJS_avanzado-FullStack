@@ -45,6 +45,14 @@ export const resolvers = {
 					else resolve(count);
 				});
 			})
+		},
+		obtenerPedidos: (root, {cliente}) => {
+			return new Promise((resolve, object) => {
+				Pedidos.find({cliente: cliente}, (error, pedido) => {
+					if(error) rejects(error);
+					else resolve(pedido);
+				})
+			})
 		}
 	},
 	Mutation: {
@@ -141,6 +149,14 @@ export const resolvers = {
 				nuevoPedido.save((error) => {
 					if(error) rejects(error)
 					else resolve(nuevoPedido)
+				})
+			})
+		},
+		actualizarEstado: (root, {input}) => {
+			return new Promise((resolve, object) => {
+				Pedidos.findOneAndUpdate({_id: input.id}, input, {new: true}, (error) => {
+					if(error) rejects(error);
+					else resolve('Se actualizó correctamente');
 				})
 			})
 		}

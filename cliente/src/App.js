@@ -15,6 +15,7 @@ import NuevoProducto from './componentes/Productos/NuevoProducto';
 import EditarProducto from './componentes/Productos/EditarProducto';
 
 import NuevoPedido from './componentes/Pedidos/NuevoPedido';
+import PedidosCliente from './componentes/Pedidos/PedidosCliente';
 
 /**
  * InMemoryCache: cuando haces un update de una persona, se agregan campos que no pertenecen al input predefinido
@@ -47,6 +48,7 @@ function App() {
                 <Route exact path="/productos/editar/:id" component={EditarProducto} />
                 <Route exact path="/productos/nuevo" component={NuevoProducto} />
                 <Route exact path="/pedidos/nuevo/:id" component={NuevoPedido} />
+				<Route exact path="/pedidos/:id" component={PedidosCliente} />
               </Switch>
             </div>
           </React.Fragment>
