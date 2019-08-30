@@ -92,13 +92,14 @@ input PedidoProductoInput {
 type Mutation {
 	#Nombre del Resolver, Input con Datos y Valor que Retorna
 	""" Te Permite crear nuevos Clientes """
-	crearCliente(input: ClienteInput) : Cliente
-	actualizarCliente(input: ClienteInput) : Cliente
+	crearCliente(input: ClienteInput): Cliente
+	actualizarCliente(input: ClienteInput): Cliente
 	eliminarCliente(id: ID!) : String
 	#Productos
-	nuevoProducto(input: ProductoInput) : Producto
-	actualizarProducto(input: ProductoInput) : Producto
-	eliminarProducto(id: ID!) : String
+	nuevoProducto(input: ProductoInput): Producto
+	actualizarProducto(input: ProductoInput): Producto
+	eliminarProducto(id: ID!): String
 	#Pedidos
 	nuevoPedido(input: PedidoInput): Pedido
+	actualizarEstado(input: PedidoInput): String
 }

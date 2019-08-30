@@ -63,3 +63,9 @@ export const NUEVO_PEDIDO = gql`
 		}
 	}
 `;
+
+export const ACTUALIZAR_ESTADO = gql`
+	mutation actualizarEstado($input: PedidoInput){
+		actualizarEstado(input:$input)
+	}
+`;
