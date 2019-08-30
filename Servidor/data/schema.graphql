@@ -10,6 +10,10 @@ type Cliente{
 type Email {
 	email: String
 }
+type ClienteTotal {
+	total: Float,
+	cliente: [Cliente]	
+}
 type Producto {
 	id: ID
 	nombre: String!,
@@ -51,6 +55,9 @@ type Query{
 
 	#Pedidos
 	obtenerPedidos(cliente: String): [Pedido]
+
+	#Graficas - Top Clientes
+	topClientes: [ClienteTotal]	#Devuelve un nuevo tipo de objeto y lo definimos mas arriba.
 }
 input EmailInput {
 	email: String
