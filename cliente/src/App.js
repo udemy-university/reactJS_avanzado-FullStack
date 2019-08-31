@@ -19,6 +19,8 @@ import PedidosCliente from './componentes/Pedidos/PedidosCliente';
 
 import Panel from './componentes/Panel/Panel';
 
+import Registro from './componentes/Auth/Registro';
+
 /**
  * InMemoryCache: cuando haces un update de una persona, se agregan campos que no pertenecen al input predefinido
  * 					seteando la propiedad en false, esto dejará de pasar.
@@ -52,6 +54,7 @@ function App() {
                 <Route exact path="/pedidos/nuevo/:id" component={NuevoPedido} />
 				        <Route exact path="/pedidos/:id" component={PedidosCliente} />
                 <Route exact path="/panel" component={Panel} />
+                <Route exact path="/registro" component={Registro} />
               </Switch>
             </div>
           </React.Fragment>
