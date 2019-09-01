@@ -10,6 +10,12 @@ type Cliente{
 type Email {
 	email: String
 }
+type Token {
+	token: String!
+}
+type Usuario {
+	usuario: String
+}
 type ClienteTotal {
 	total: Float,
 	cliente: [Cliente]	
@@ -58,6 +64,9 @@ type Query{
 
 	#Graficas - Top Clientes
 	topClientes: [ClienteTotal]	#Devuelve un nuevo tipo de objeto y lo definimos mas arriba.
+
+	#Usuarios
+	obtenerUsuario: Usuario
 }
 input EmailInput {
 	email: String
@@ -111,4 +120,5 @@ type Mutation {
 	actualizarEstado(input: PedidoInput): String
 	#Usuarios
 	crearUsuario(usuario: String!, password: String!): String
+	autenticarUsuario(usuario: String!, password: String!): Token
 }

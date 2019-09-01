@@ -12,7 +12,7 @@ const Clientes = () => {
                 if(error) return `Error ${error.message}`;
 
                 const topClientesGrafica = [];
-                console.log(data);
+
                 data.topClientes.map((pedido, index) => {
                     topClientesGrafica[index] = {
                         ...pedido.cliente[0],

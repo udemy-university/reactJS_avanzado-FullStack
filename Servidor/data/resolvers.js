@@ -1,6 +1,20 @@
 import mongoose from 'mongoose';
 import { Clientes, Productos, Pedidos, Usuarios } from './db';
 import { rejects } from 'assert';
+import bcrypt from 'bcrypt';
+
+// Generar Token
+import dotenv from 'dotenv';
+dotenv.config({path: 'variables.env'});
+
+import jwt from 'jsonwebtoken';
+
+//expiresIn es una palabra reservada del método sign de jwt.
+const crearToken = (usuarioLogin, secreto, expiresIn) => {
+	const { usuario } = usuarioLogin;
+
+	return jwt.sign({usuario}, secreto, {expiresIn});
+}
 
 export const resolvers = {
 	Query: {
@@ -87,6 +101,15 @@ export const resolvers = {
 					else resolve(resultado);
 				})
 			})
+		},
+		/**el {usuarioActual} es el que se inserta en el index del servidor que va en el header */
+		obtenerUsuario: (root, args, {usuarioActual}) => {
+			if(!usuarioActual) return null;
+			
+			/**Obtener el usuario actual del request del JWT Verificado */
+			const usuario = Usuarios.findOne({usuario: usuarioActual.usuario});
+
+			return usuario;
 		}
 	},
 	Mutation: {
@@ -213,6 +236,24 @@ export const resolvers = {
 			}).save();
 			
 			return 'Creado correctamente';
+		},
+		autenticarUsuario: async (root, {usuario, password}) => {
+			const nombreUsuario = await Usuarios.findOne({usuario});
+
+			if(!nombreUsuario) {
+				throw new Error('Usuario no encontrado');
+			}
+
+			//compara el password: el de entrada, con nombreUsuario.password: el traido de la BD.
+			const passwordCorrecto = await bcrypt.compare(password, nombreUsuario.password);
+
+			if(!passwordCorrecto) {
+				throw new Error('Password Incorrecto');
+			}
+
+			return {
+				token: crearToken(nombreUsuario, process.env.SECRETO, '1hr')
+			}
 		}
 	}
 }
