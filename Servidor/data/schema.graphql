@@ -14,7 +14,10 @@ type Token {
 	token: String!
 }
 type Usuario {
+	id: ID
 	usuario: String
+	nombre: String
+	rol: String
 }
 type ClienteTotal {
 	total: Float,
@@ -119,6 +122,6 @@ type Mutation {
 	nuevoPedido(input: PedidoInput): Pedido
 	actualizarEstado(input: PedidoInput): String
 	#Usuarios
-	crearUsuario(usuario: String!, password: String!): String
+	crearUsuario(usuario: String!, nombre:String!, password: String!, rol: String!): String
 	autenticarUsuario(usuario: String!, password: String!): Token
 }

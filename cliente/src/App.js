@@ -26,7 +26,7 @@ import Session from './componentes/Session';
 const App = ({refetch, session}) => {
 
 	const { obtenerUsuario } = session;
-	const mensaje = (obtenerUsuario) ? `Bienvenido: ${obtenerUsuario.usuario}` : <Redirect to="/login" />;
+	const mensaje = (obtenerUsuario) ? `Bienvenido: ${obtenerUsuario.nombre}` : <Redirect to="/login" />;
 	return (
 			<Router>
 				<React.Fragment>

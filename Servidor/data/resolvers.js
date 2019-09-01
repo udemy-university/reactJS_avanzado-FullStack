@@ -222,7 +222,7 @@ export const resolvers = {
 				})
 			})
 		},
-		crearUsuario: async (root, {usuario, password}) => {
+		crearUsuario: async (root, {usuario, nombre, password, rol}) => {
 			//revisar si un usuario contiene este password
 			const existeUsuario = await Usuarios.findOne({usuario});
 
@@ -232,7 +232,9 @@ export const resolvers = {
 
 			const nuevoUsuario = await new Usuarios({
 				usuario,
-				password
+				nombre,
+				password,
+				rol
 			}).save();
 			
 			return 'Creado correctamente';

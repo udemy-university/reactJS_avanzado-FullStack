@@ -43,7 +43,9 @@ const Pedidos = mongoose.model('pedidos', pedidosSchema);
 
 const usuariosSchema = new mongoose.Schema({
 	usuario: String,
-	password: String
+	nombre: String,
+	password: String,
+	rol: String
 });
 
 //Hashear los passwords antes de guardarlos en la BD.
