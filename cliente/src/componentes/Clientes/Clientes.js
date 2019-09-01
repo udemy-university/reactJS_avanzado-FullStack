@@ -43,15 +43,25 @@ class Clientes extends Component {
 	}
 
 	render() {
+		//Alerta en caso de que sea exitoso
 		const {alerta: {mostrar, mensaje}} = this.state; //otra forma de hacer destructuring
 		const alerta = (mostrar) ? <Exito mensaje={mensaje} /> : '';
 
+		//Obtiene el id del vendedor para mostrar sus clientes.
+		let id;
+		const { rol } = this.props.session.obtenerUsuario;
+		if(rol === "VENDEDOR") {
+			id = this.props.session.obtenerUsuario.id;
+		} else {
+			id = "";
+		}
+
 		return(
-			<Query query={CLIENTES_QUERY} pollInterval={1000} variables={{limite: this.limite, offset: this.state.paginador.offset}} >
+			<Query query={CLIENTES_QUERY} pollInterval={1000} variables={{limite: this.limite, offset: this.state.paginador.offset, vendedor: id}} >
 				{({ loading, error, data, startPolling, stopPolling }) => {
 					if(loading) return "Cargando...";
 					if(error) return `Error: ${error.message}`;
-
+					console.log(data);
 					return (
 						<React.Fragment>
 							<h2 className="text-center">Listado Clientes</h2>

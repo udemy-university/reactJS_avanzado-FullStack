@@ -22,6 +22,12 @@ import Login from './componentes/Auth/Login';
 
 import Session from './componentes/Session';
 
+/**
+ * Existe alguna otra diferencia en renderizar un componente con el render y sin el render
+ * a parte de poder pasarle parámetros?
+ * V o DV ?
+ */
+
 /** App recibe los parámetros que manda Session. */
 const App = ({refetch, session}) => {
 
@@ -34,9 +40,9 @@ const App = ({refetch, session}) => {
 					<div className="container">
 						<p className="text-right">{mensaje}</p>
 						<Switch>
-							<Route exact path="/clientes" component={Clientes} />
+							<Route exact path="/clientes" render={()=> <Clientes session={session}/> } />
 							<Route exact path="/clientes/editar/:id" component={EditarCliente} />
-							<Route exact path="/clientes/nuevo" component={NuevoCliente} />
+							<Route exact path="/clientes/nuevo" render={()=> <NuevoCliente session={session}/> } />
 							<Route exact path="/productos" component={Productos} />
 							<Route exact path="/productos/editar/:id" component={EditarProducto} />
 							<Route exact path="/productos/nuevo" component={NuevoProducto} />
@@ -55,3 +61,8 @@ const App = ({refetch, session}) => {
 const RootSession = Session(App);
 
 export { RootSession };
+
+/**
+ * userVendedor / userAdmin
+ * 123abc
+ */

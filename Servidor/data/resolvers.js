@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import { Clientes, Productos, Pedidos, Usuarios } from './db';
 import { rejects } from 'assert';
 import bcrypt from 'bcrypt';
+const ObjectId = mongoose.Types.ObjectId;
 
 // Generar Token
 import dotenv from 'dotenv';
@@ -18,8 +19,12 @@ const crearToken = (usuarioLogin, secreto, expiresIn) => {
 
 export const resolvers = {
 	Query: {
-		getClientes: (root, {limite, offset}) => {
-			return Clientes.find({}).limit(limite).skip(offset);
+		getClientes: (root, {limite, offset, vendedor}) => {
+			let filtro;
+			if(vendedor){
+				filtro = {vendedor: new ObjectId(vendedor)}
+			}
+			return Clientes.find(filtro).limit(limite).skip(offset);
 		},
 		getCliente: (root, {id}) => {
 			return new Promise((resolve, object) => {
@@ -121,7 +126,8 @@ export const resolvers = {
 				emails: input.emails,
 				edad : input.edad,
 				tipo : input.tipo,
-				pedidos : input.pedidos
+				pedidos : input.pedidos,
+				vendedor : input.vendedor
 			});
 			nuevoCliente.id = nuevoCliente._id;
 
