@@ -1,0 +1,2 @@
+{"_id":{"$oid":"5d6b453c98776936d07e9c9b"},"usuario":"userVendedor","nombre":"Sandro Dezerio - Vendedor","password":"$2b$10$4qe9b1v4y17mhJQwK02MuOjzRraF7MgtZakTURJ71d9O1bgrmpZ82","rol":"VENDEDOR","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5d6b456298776936d07e9c9c"},"usuario":"userAdmin","nombre":"Sandro Dezerio - Admin","password":"$2b$10$UETf573JkPtaSD3DeLx7.eiJYI8ZsgxU5oOqoldGabAgup1bDc9jq","rol":"ADMINISTRADOR","__v":{"$numberInt":"0"}}

@@ -1,0 +1,8 @@
+{"_id":{"$oid":"5d420371302b1412c87ddd20"},"emails":[{"email":"mail@mail.com"},{"email":"qqq@twq.com"}],"pedidos":[],"nombre":"Sandro","apellido":"Dezeriooo","empresa":"aaaaaa","edad":{"$numberInt":"15"},"tipo":"BASICO","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5d44e8363cfe06212ce34cd7"},"emails":[{"email":"aa@aa.com"}],"pedidos":[],"nombre":"wtttt","apellido":"Leroasfasf","empresa":"aa","edad":{"$numberInt":"1"},"tipo":"PREMIUN","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5d44f63f3cfe06212ce34cda"},"emails":[],"pedidos":[],"nombre":"aaaaaa","apellido":"bbbbbb","empresa":"qwrwqr","edad":{"$numberInt":"1"},"tipo":"PREMIUN","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5d44f72115533528e8745475"},"emails":[],"pedidos":[],"nombre":"b","apellido":"qwr","empresa":"q","edad":{"$numberInt":"1"},"tipo":"BASICO","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5d44f72c15533528e8745476"},"emails":[],"pedidos":[],"nombre":"qwrwqr","apellido":"www","empresa":"1","edad":{"$numberInt":"154"},"tipo":"PREMIUN","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5d44f73615533528e8745477"},"emails":[],"pedidos":[],"nombre":"ffqqw","apellido":"qwrrwq","empresa":"14","edad":{"$numberInt":"5"},"tipo":"PREMIUN","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5d69a916c3588613e49f43be"},"emails":[],"pedidos":[],"nombre":"Pablo","apellido":"Pepe","empresa":"Algo","edad":{"$numberInt":"12"},"tipo":"PREMIUN","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5d6be330e136532ab4fc9505"},"emails":[{"email":"mail@mail.com"}],"pedidos":[],"nombre":"Nuevo","apellido":"Cliente","empresa":"Smart360","edad":{"$numberInt":"12"},"tipo":"PREMIUN","vendedor":{"$oid":"5d6b453c98776936d07e9c9b"},"__v":{"$numberInt":"0"}}

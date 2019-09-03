@@ -1,0 +1,4 @@
+{"_id":{"$oid":"5d5335815ae74c0a886fdebe"},"nombre":"Laptop","precio":{"$numberInt":"400"},"stock":{"$numberInt":"630"},"__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5d53362c5ae74c0a886fdec0"},"nombre":"Television","precio":{"$numberInt":"100"},"stock":{"$numberInt":"15"},"__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5d54b964704055063c5bcc58"},"nombre":"Campera","precio":{"$numberInt":"10"},"stock":{"$numberInt":"-1"},"__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5d54bdde704055063c5bcc5a"},"nombre":"Microfono","precio":{"$numberInt":"100"},"stock":{"$numberInt":"1"},"__v":{"$numberInt":"0"}}
