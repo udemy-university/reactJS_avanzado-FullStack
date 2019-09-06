@@ -4,12 +4,15 @@ import { OBTENER_PRODUCTOS } from '../../queries';
 import { Query } from 'react-apollo';
 import '../../spinner.css';
 import ContenidoPedido from './ContenidoPedido';
+import { withRouter } from 'react-router-dom';
 
 class NuevoPedido extends Component {
 	state = {}
 
     render() { 
         const { id } = this.props.match.params;
+		//Obtener el id del vendedor actual
+		const idVendedor = this.props.session.obtenerUsuario.id;
 
         return (
 			<Fragment>
@@ -36,6 +39,7 @@ class NuevoPedido extends Component {
 									<ContenidoPedido
 										productos={data.obtenerProductos}
 										id={id}
+										idVendedor={idVendedor}
 									/>
 								)
 							}}
@@ -47,4 +51,4 @@ class NuevoPedido extends Component {
     }
 }
  
-export default NuevoPedido;
+export default withRouter(NuevoPedido);

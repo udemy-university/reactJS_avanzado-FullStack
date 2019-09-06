@@ -23,6 +23,10 @@ type ClienteTotal {
 	total: Float,
 	cliente: [Cliente]	
 }
+type VendedorTotal {
+	total: Float,
+	vendedor: [Usuario]	
+}
 type Producto {
 	id: ID
 	nombre: String!,
@@ -36,6 +40,7 @@ type Pedido {
 	fecha: String
 	cliente: ID
 	estado: EstadoPedido
+	vendedor: ID
 }
 type PedidoProducto {
 	id: ID
@@ -55,7 +60,7 @@ type Query{
 	# Clientes
 	getClientes(limite: Int, offset: Int, vendedor: String): [Cliente]
 	getCliente(id: ID): Cliente
-	totalClientes: String,
+	totalClientes(vendedor: String): String,
 
 	# Productos
 	obtenerProductos(limite: Int, offset: Int, stock: Boolean): [Producto]
@@ -67,6 +72,7 @@ type Query{
 
 	#Graficas - Top Clientes
 	topClientes: [ClienteTotal]	#Devuelve un nuevo tipo de objeto y lo definimos mas arriba.
+	topVendedores: [VendedorTotal]
 
 	#Usuarios
 	obtenerUsuario: Usuario
@@ -101,6 +107,7 @@ input PedidoInput {
 	fecha: String
 	cliente: ID
 	estado: EstadoPedido
+	vendedor: ID
 }
 
 input PedidoProductoInput {

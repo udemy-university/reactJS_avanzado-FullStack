@@ -4,6 +4,8 @@ import { OBTENER_PRODUCTO } from '../../queries';
 import ResumenProducto from './ResumenProducto';
 import { ACTUALIZAR_ESTADO } from '../../mutations';
 
+import '../../pedidos.css';
+
 const Pedido = (props) => {
 	const { pedido } = props;
 	const { id } = pedido;
@@ -52,11 +54,8 @@ const Pedido = (props) => {
 					<p className="card-text font-weight-bold">Fecha Pedido: 
 						<span className="font-weight-normal"> {fecha.toLocaleString('es-AR')}</span>
 					</p>
-					<p className="card-text font-weight-bold">Total: 
-						<span className="font-weight-normal"> ${pedido.total}</span>
-					</p>
 
-					<h3 className="card-text text-center mb-3">Artículos del pedido</h3>
+					<h3 className="card-text text-center mb-3 resaltar-texto">Artículos del pedido</h3>
 					{pedido.pedido.map((producto, index) => {
 						const {id} = producto;
 						return(
@@ -75,6 +74,11 @@ const Pedido = (props) => {
 							</Query>
 						)
 					})}
+
+					<div className="d-flex align-items-center justify-content-end">
+						<p className="card-text resaltar-texto mr-1 bg-amarillo">Total:</p>
+						<p className="font-weight-normal inc-texto">${pedido.total}</p>
+					</div>
 				</div>
 			</div>
 		</div>
