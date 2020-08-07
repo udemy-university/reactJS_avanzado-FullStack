@@ -9,6 +9,7 @@ import dotenv from 'dotenv';
 dotenv.config({path: 'variables.env'});
 
 import jwt from 'jsonwebtoken';
+import { AuthenticationError } from 'apollo-server-core';
 
 //expiresIn es una palabra reservada del método sign de jwt.
 const crearToken = (usuarioLogin, secreto, expiresIn) => {
@@ -26,7 +27,13 @@ export const resolvers = {
 			}
 			return Clientes.find(filtro).limit(limite).skip(offset);
 		},
-		getCliente: (root, {id}) => {
+		getCliente: (root, {id}, context) => {
+			console.log("contexto",context.usuarioActual);
+			/*	seguridad opción 2) enviando el usuario por el contexto, debemos pasarlo como un tercer parámetro
+				en cada query o mutation de los resolvers y ahí podemos trabajar en lo que queramos.
+				if(!context.usuarioActual){
+				throw new AuthenticationError('Lanzamos excepción desde resolver');
+			}*/
 			return new Promise((resolve, object) => {
 				Clientes.findById(id, (error, cliente) => {
 					if(error) rejects(error);

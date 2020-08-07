@@ -1,11 +1,13 @@
+directive @length(max: Int) on FIELD_DEFINITION | INPUT_FIELD_DEFINITION
+
 type Cliente{
-		id: ID
-		nombre: String
-		apellido: String
-		empresa: String
-		emails: [Email]
-		edad: Int
-		tipo: TipoCliente
+	id: ID
+	nombre: String @length(max: 5)
+	apellido: String
+	empresa: String
+	emails: [Email]
+	edad: Int
+	tipo: TipoCliente
 }
 type Email {
 	email: String
@@ -83,8 +85,8 @@ input EmailInput {
 """ Campos para los clientes nuevos """
 input ClienteInput {
 	id: ID
-	nombre: String!
-	apellido: String!
+	nombre: String!  @length(max: 5)
+	apellido: String! @length(max: 12)
 	empresa: String!
 	emails: [EmailInput]!
 	edad: Int!
